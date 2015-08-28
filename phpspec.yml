@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Deepbook
+        psr4_prefix: Deepbook
+        src_path: app
