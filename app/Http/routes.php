@@ -11,10 +11,36 @@
 |
 */
 
+/**
+ * Home Route
+ */
 Route::get('/', [
-    'uses' => '\Deepbook\http\Controllers\HomeController@index',
+    'uses' => '\Deepbook\Http\Controllers\HomeController@index',
     'as' => 'home',
-    ]);
-Route::get('/alert', function () {
-    return redirect()->route('home')->with('info', 'Yolo');
-});
+]);
+
+/**
+ * Authentication
+ */
+
+Route::get('/signup', [
+    'uses' => '\Deepbook\Http\Controllers\AuthController@getSignup',
+    'as' => 'auth.signup',
+]);
+
+Route::post('/signup', [
+    'uses' => '\Deepbook\Http\Controllers\AuthController@postSignup',
+]);
+
+Route::get('/signin', [
+    'uses' => '\Deepbook\Http\Controllers\AuthController@getSignin',
+    'as' => 'auth.signin',
+]);
+
+Route::post('/signin', [
+    'uses' => '\Deepbook\Http\Controllers\AuthController@postSignin',
+]);
+Route::get('/signout', [
+    'uses' => '\Deepbook\Http\Controllers\AuthController@getSignout',
+    'as' => 'auth.signout',
+]);

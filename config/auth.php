@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Deepbook\User::class,
+    'model' => Deepbook\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
