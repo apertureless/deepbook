@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 /**
  * Authentication Controller
  */
-class AuthController extends Controller {
+class AuthController extends Controller
+{
 
     public function getSignup()
     {

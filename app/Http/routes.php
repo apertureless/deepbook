@@ -44,7 +44,25 @@ Route::post('/signin', [
     'uses' => '\Deepbook\Http\Controllers\AuthController@postSignin',
     'middleware' => ['guest'],
 ]);
+
 Route::get('/signout', [
     'uses' => '\Deepbook\Http\Controllers\AuthController@getSignout',
     'as' => 'auth.signout',
+]);
+
+/**
+ * Search
+ */
+
+Route::get('/search', [
+    'uses' => '\Deepbook\Http\Controllers\SearchController@getResults',
+    'as' => 'search.results',
+]);
+
+/**
+ * User Profile
+ */
+Route::get('/user/{username}', [
+    'uses' => '\Deepbook\Http\Controllers\ProfileController@getProfile',
+    'as' => 'profile.index',
 ]);

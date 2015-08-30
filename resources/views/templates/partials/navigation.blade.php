@@ -8,17 +8,22 @@
                 <li><a href="">Timeline</a></li>
                 <li><a href="">Friends</a></li>
             </ul>
-            <form action="" role="search" class="navbar-form navbar-left">
+            <form role="search" class="navbar-form navbar-left" action="{{ route('search.results') }}">
                 <div class="form-group">
                     <input type="text" name="query" class="form-control" placeholder="Find your friends">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
             </form>
          @endif
         <ul class="nav navbar-nav navbar-right">
             @if (Auth::check())
-                <li><a href="">{{ Auth::user()->getUsername() }}</a></li>
-                <li><a href="">Update Profile</a></li>
+                <li>
+                    <a href="{{ route('profile.index', ['username' => Auth::user()->username])}}">
+                        {{ Auth::user()->getUsername() }}
+                    </a>
+                </li>
+                <li><a href="#">Update Profile</a></li>
                 <li><a href="{{ route('auth.signout') }}">Sign Out</a></li>
             @else
                 <li><a href="{{ route('auth.signup') }}">Sign up</a></li>
