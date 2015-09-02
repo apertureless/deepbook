@@ -18,7 +18,6 @@ class ProfileController extends Controller
             ->with('user', $user);
     }
 
-
     public function getEdit()
     {
         return view('profile.edit');
