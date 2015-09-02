@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-4 col-md-offset-2">
-            infor
+
         </div>
     </div>
 @stop
