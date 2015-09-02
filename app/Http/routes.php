@@ -66,3 +66,15 @@ Route::get('/user/{username}', [
     'uses' => '\Deepbook\Http\Controllers\ProfileController@getProfile',
     'as' => 'profile.index',
 ]);
+
+Route::get('/profile/edit', [
+    'uses' => '\Deepbook\Http\Controllers\ProfileController@getEdit',
+    'as' => 'profile.edit',
+    'middleware' => ['auth'],
+]);
+
+Route::post('/profile/edit', [
+    'uses' => '\Deepbook\Http\Controllers\ProfileController@postEdit',
+    'middleware' => ['auth'],
+]);
+

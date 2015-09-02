@@ -1,5 +1,4 @@
 <?php
-
 namespace Deepbook\Http\Controllers;
 
 use Auth;
@@ -11,7 +10,6 @@ use Illuminate\Http\Request;
  */
 class AuthController extends Controller
 {
-
     public function getSignup()
     {
         return view('auth.signup');
@@ -36,19 +34,19 @@ class AuthController extends Controller
             ->with('info', 'Your Account has been created and you can login now.');
     }
 
-     public function getSignin()
+    public function getSignin()
     {
         return view('auth.signin');
     }
 
-     public function postSignin(Request $request)
+    public function postSignin(Request $request)
     {
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
         ]);
 
-        if(!Auth::attempt($request->only(['username', 'password']), $request->has('remember'))) {
+        if (!Auth::attempt($request->only(['username', 'password']), $request->has('remember'))) {
             return redirect()->back()->with('info', 'User / Passwort wrong');
         }
 
@@ -60,4 +58,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('home')->with('info', 'Successfully singed out');
     }
+
 }
