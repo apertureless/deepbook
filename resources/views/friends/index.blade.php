@@ -23,6 +23,8 @@
                 @endforeach
             @endif
 
+            <h3>Pending Requests</h3>
+
         </div>
     </div>
 @stop

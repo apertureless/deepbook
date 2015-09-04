@@ -53,9 +53,9 @@ class FriendsController extends Controller
         }
 
         Auth::user()->addFriend($user);
-        return redirect()
-            ->route('profile.index', ['username' => $user->username])
-            ->with('info', 'Friend request send');
+            return redirect()
+                ->route('profile.index', ['username' => $user->username])
+                ->with('info', 'Friend request send');
     }
 
     public function getAccept( $username )
