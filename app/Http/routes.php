@@ -87,3 +87,14 @@ Route::get('/friends', [
     'middleware' => ['auth'],
 ]);
 
+Route::get('/friends/add/{username}', [
+    'uses' => '\Deepbook\Http\Controllers\FriendsController@getAdd',
+    'as' => 'friends.add',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/friends/accept/{username}', [
+    'uses' => '\Deepbook\Http\Controllers\FriendsController@getAccept',
+    'as' => 'friends.accept',
+    'middleware' => ['auth'],
+]);
