@@ -32,6 +32,13 @@ class FriendsController extends Controller
         }
 
         // @todo Add one method to user modell to shorten this up. After writing the tests.
+
+        if (Auth::user()->id === $user->id) {
+             return redirect()
+                ->route('home')
+                ->with('info', 'You cannot add yourself. You doughnut.');
+         }
+
         if (Auth::user()->hasFriendRequestPending($user) ||
             $user->hasFriendRequestPending(Auth::user())) {
             return redirect()
@@ -53,6 +60,21 @@ class FriendsController extends Controller
 
     public function getAccept( $username )
     {
-        dd($username);
+        $user = User::where('username', $username)->first();
+        // @todo refactor this redudant code into a method to check user.
+        if (! $user) {
+            return redirect()
+                ->route('home')
+                ->with('info', 'User could not be found.');
+        }
+
+        if (! Auth::user()->hasReceivedFriendRequest($user)) {
+            return redirect()->route('home');
+        }
+
+        Auth::user()->acceptFriend($user);
+        return redirect()
+            ->route('profile.index', ['username' => $user->username])
+            ->with('info', 'Friend request accepted');
     }
 }
